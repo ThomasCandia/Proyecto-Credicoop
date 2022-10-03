@@ -14,4 +14,8 @@ public class Gestor extends Persistente {
 
   @Column(name = "nombre")
   private String nombre;
+
+  @Column(name = "apellido")
+  private String apellido;
+
 }

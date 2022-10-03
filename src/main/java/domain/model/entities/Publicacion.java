@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -19,14 +20,11 @@ public class Publicacion extends Persistente {
   @OneToOne
   private ProductoPersonalizado productoPublicado;
 
-  @OneToMany
-  @JoinColumn(name = "Publicacion_id", referencedColumnName = "id")
+  //Bidireccional
+  @OneToMany(mappedBy = "publicacion")
   private List<RegistroEstado> registrosEstados;
 
-  public Publicacion()
-  {
-    this.registrosEstados = new ArrayList<>();
-  }
+  public Publicacion() {}
 
   public Publicacion(String nombre,ProductoPersonalizado productoPublicado)
   {
@@ -34,4 +32,17 @@ public class Publicacion extends Persistente {
     this.productoPublicado = productoPublicado;
     this.registrosEstados = new ArrayList<>();
   }
+
+  public RegistroEstado estadoActual(){
+
+    int tamanio = this.registrosEstados.size();
+    return this.registrosEstados.get(tamanio-1);
+  }
+
+  public void agregarRegistro(RegistroEstado registroEstado){
+    this.registrosEstados.add(registroEstado);
+  }
+
+
+
 }

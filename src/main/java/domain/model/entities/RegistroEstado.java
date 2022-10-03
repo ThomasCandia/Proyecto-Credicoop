@@ -17,5 +17,9 @@ public class RegistroEstado extends Persistente {
   @Enumerated(EnumType.STRING)
   private EstadoPublicacion estadoPublicacion;
 
+  @ManyToOne
+  @JoinColumn(name = "publicacion_id")
+  private Publicacion publicacion;
+
 
 }

@@ -3,9 +3,7 @@ package domain.model.entities.comprador;
 import domain.model.entities.Persistente;
 import domain.model.entities.producto.ProductoPersonalizado;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +11,7 @@ import java.util.List;
 @Table(name = "CarritoDeCompra")
 public class CarritoDeCompra extends Persistente {
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   private List<ProductoPersonalizado> productosAComprar;
 
   public CarritoDeCompra() {this.productosAComprar = new ArrayList<>();}

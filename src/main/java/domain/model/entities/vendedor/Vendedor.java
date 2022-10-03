@@ -15,12 +15,17 @@ import java.util.List;
 @Setter @Getter
 public class Vendedor extends Persistente {
 
-  @OneToOne
+  @Column(name = "nombre")
+  private String nombre;
+
+  @Column(name = "apellido")
+  private String apellido;
+
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   private Tienda tienda;
 
-  @Transient
-  //TODO ver si hacer una entidad a Metodos de Pago
-  private List<MetodosDePago> metodosDePago;
+  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+  private List<MetodoDePago> metodoDePagos;
 
   @OneToMany
   @JoinColumn(name = "Vendedor_Id", referencedColumnName = "id")
@@ -29,7 +34,7 @@ public class Vendedor extends Persistente {
   public Vendedor() {}
 
   public Vendedor(Tienda tienda) {
-    this.metodosDePago = new ArrayList<>();
+    this.metodoDePagos = new ArrayList<>();
     this.productosPersonalizados = new ArrayList<>();
     this.tienda = tienda;
   }

@@ -1,5 +1,6 @@
 package domain;
 
+import domain.model.entities.producto.Area;
 import domain.model.entities.producto.ProductoBase;
 import domain.repositories.RepoProductoBaseSpring;
 import org.springframework.boot.CommandLineRunner;
@@ -16,9 +17,24 @@ import org.springframework.context.annotation.Bean;
   }
 
   @Bean
-  public CommandLineRunner ejemplo(RepoProductoBaseSpring repo){
+  public CommandLineRunner ejemplo(RepoProductoBaseSpring repo) {
       return (args) -> {
-        repo.save(new ProductoBase("buzo", 13,"blanca","10 dias"));
+        //Poner mas decimales
+       /* Area area1 = new Area("atras");
+        Area area2 = new Area("atras");
+        ProductoBase remera1 = new ProductoBase("Remera", 12.68,"negra","2 meses");
+        ProductoBase buzo = new ProductoBase("Buzo", 12.68,"negra","2 meses");
+        remera1.agregarArea(area1);
+        buzo.agregarArea(area2);
+        repo.save(remera1);
+        repo.save(buzo);
+        ProductoBase buzoBuscado = repo.findProductoBaseByNombre("Buzo");
+
+
+        */
+
+       // Vendedor vendedor1 = new Vendedor(new Tienda());
+        //repo3.save(vendedor1);
       };
   }
 
