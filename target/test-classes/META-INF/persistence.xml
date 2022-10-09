@@ -11,6 +11,9 @@
         <class>domain.model.entities.Gestor</class>
         <class>domain.model.entities.comprador.CarritoDeCompra</class>
         <class>domain.model.entities.comprador.Comprador</class>
+        <class>domain.model.entities.comprador.Item</class>
+        <class>domain.model.entities.comprador.Compra</class>
+        <class>domain.model.entities.comprador.RegistroEstadoCompra</class>
         <class>domain.model.entities.producto.Area</class>
         <class>domain.model.entities.producto.Personalizacion</class>
         <class>domain.model.entities.producto.ProductoBase</class>
@@ -19,9 +22,9 @@
 
         <class>domain.model.entities.vendedor.Vendedor</class>
         <class>domain.model.entities.vendedor.MetodoDePago</class>
-        <class>domain.model.entities.Publicacion</class>
-        <class>domain.model.entities.RegistroEstado</class>
-        <class>domain.model.entities.Tienda</class>
+        <class>domain.model.entities.publicacion.Publicacion</class>
+        <class>domain.model.entities.publicacion.RegistroEstadoPublicacion</class>
+        <class>domain.model.entities.publicacion.Tienda</class>
 
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
