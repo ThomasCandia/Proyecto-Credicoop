@@ -1,12 +1,12 @@
-package domain.model.entities;
+package domain.model.entities.publicacion;
 
+import domain.model.entities.Persistente;
 import domain.model.entities.producto.ProductoPersonalizado;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -22,25 +22,24 @@ public class Publicacion extends Persistente {
 
   //Bidireccional
   @OneToMany(mappedBy = "publicacion")
-  private List<RegistroEstado> registrosEstados;
+  private List<RegistroEstadoPublicacion> registrosEstados;
 
   public Publicacion() {}
 
-  public Publicacion(String nombre,ProductoPersonalizado productoPublicado)
-  {
+  public Publicacion(String nombre,ProductoPersonalizado productoPublicado) {
     this.nombre = nombre;
     this.productoPublicado = productoPublicado;
     this.registrosEstados = new ArrayList<>();
   }
 
-  public RegistroEstado estadoActual(){
+  public RegistroEstadoPublicacion getEstadoActual(){
 
     int tamanio = this.registrosEstados.size();
     return this.registrosEstados.get(tamanio-1);
   }
 
-  public void agregarRegistro(RegistroEstado registroEstado){
-    this.registrosEstados.add(registroEstado);
+  public void agregarRegistro(RegistroEstadoPublicacion registroEstadoPublicacion){
+    this.registrosEstados.add(registroEstadoPublicacion);
   }
 
 

@@ -1,5 +1,7 @@
-package domain.model.entities;
+package domain.model.entities.publicacion;
 
+import domain.model.entities.Persistente;
+import domain.model.entities.publicacion.Publicacion;
 import lombok.Getter;
 
 import javax.persistence.*;

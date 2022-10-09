@@ -1,6 +1,7 @@
 package domain.model.entities.producto;
 
 import domain.model.entities.Persistente;
+import domain.model.entities.vendedor.Vendedor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,10 @@ public class ProductoPersonalizado extends Persistente {
  @OneToMany
  @JoinColumn(name = "Producto_Personalizado_id", referencedColumnName = "id")
   private List<Personalizacion> personalizaciones;
+
+ @ManyToOne
+ @JoinColumn(name = "vendedor_id")
+ private Vendedor vendedor;
 
 
   public Double calcularPrecioFinal(){

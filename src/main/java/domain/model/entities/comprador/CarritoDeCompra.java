@@ -1,7 +1,7 @@
 package domain.model.entities.comprador;
 
 import domain.model.entities.Persistente;
-import domain.model.entities.producto.ProductoPersonalizado;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,24 +12,23 @@ import java.util.List;
 public class CarritoDeCompra extends Persistente {
 
   @ManyToMany(fetch = FetchType.EAGER)
-  private List<ProductoPersonalizado> productosAComprar;
+  private List<Item> itemsAComprar;
 
-  public CarritoDeCompra() {this.productosAComprar = new ArrayList<>();}
-
-  public CarritoDeCompra(List<ProductoPersonalizado> productosAComprar) {
-    this.productosAComprar = productosAComprar;
+  public CarritoDeCompra() {
+    this.itemsAComprar = new ArrayList<>();
   }
 
-  public void agregarProducto(ProductoPersonalizado productoPersonalizado){
-    this.productosAComprar.add(productoPersonalizado);
+  public void agregarProducto(Item item){
+    //TODO hacer las validaciones del mismo vendedor acá
+    this.itemsAComprar.add(item);
   }
 
-  public void eliminarProducto(ProductoPersonalizado productoPersonalizado){
-    this.productosAComprar.remove(productoPersonalizado);
+  public void eliminarProducto(Item item){
+    this.itemsAComprar.remove(item);
   }
 
   public Double calcularTotal(){
-    return this.productosAComprar.stream().mapToDouble(ProductoPersonalizado::calcularPrecioFinal).sum();
+    return this.itemsAComprar.stream().mapToDouble(Item::calcularPrecio).sum();
   }
 
 }

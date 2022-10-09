@@ -1,12 +1,16 @@
-package domain.model.entities;
+package domain.model.entities.publicacion;
+
+import domain.model.entities.Persistente;
+import domain.model.entities.publicacion.EstadoPublicacion;
+import domain.model.entities.publicacion.Publicacion;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "Resgistro_estado")
-public class RegistroEstado extends Persistente {
+@Table(name = "Resgistro_estado_publicacion")
+public class RegistroEstadoPublicacion extends Persistente {
 
   @Column(name = "fecha")
   private  LocalDate fecha;

@@ -1,6 +1,6 @@
 package domain.model.entities.vendedor;
 
-import domain.model.entities.Tienda;
+import domain.model.entities.publicacion.Tienda;
 import domain.model.entities.Persistente;
 import domain.model.entities.producto.ProductoPersonalizado;
 import lombok.Getter;
@@ -28,7 +28,6 @@ public class Vendedor extends Persistente {
   private List<MetodoDePago> metodoDePagos;
 
   @OneToMany
-  @JoinColumn(name = "Vendedor_Id", referencedColumnName = "id")
   private List<ProductoPersonalizado> productosPersonalizados;
 
   public Vendedor() {}
