@@ -13,10 +13,10 @@ import java.time.LocalTime;
 public class RegistroEstadoPublicacion extends Persistente {
 
   @Column(name = "fecha")
-  private  LocalDate fecha;
+  private  LocalDate fechaPublicacion;
 
   @Column(name = "hora")
-  private  LocalTime hora;
+  private  LocalTime horaPublicacion;
 
   @Enumerated(EnumType.STRING)
   private EstadoPublicacion estadoPublicacion;

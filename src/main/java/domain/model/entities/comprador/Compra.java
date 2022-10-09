@@ -2,11 +2,23 @@ package domain.model.entities.comprador;
 
 import domain.model.entities.Persistente;
 import domain.model.entities.vendedor.MetodoDePago;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class Compra extends Persistente {
+@Entity
+@Table(name = "Compras")
+@Getter @Setter
+//TODO CONSTRUCTORES
+public class
+Compra extends Persistente {
 
   @ManyToOne
   @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id")
