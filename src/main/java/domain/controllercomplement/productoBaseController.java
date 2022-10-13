@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/productobase")
+@RepositoryRestController
 public class productoBaseController {
 
   @Autowired
@@ -35,6 +34,7 @@ public class productoBaseController {
       return new ResponseEntity<Object>("La materia no existe", HttpStatus.BAD_REQUEST);
 
   }
+
 
 
 }

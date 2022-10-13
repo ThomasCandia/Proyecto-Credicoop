@@ -34,6 +34,8 @@ import org.springframework.context.annotation.Bean;
 
        // Vendedor vendedor1 = new Vendedor(new Tienda());
         //repo3.save(vendedor1);
+
+
       };
   }
 

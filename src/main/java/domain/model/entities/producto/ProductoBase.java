@@ -33,7 +33,6 @@ public class ProductoBase extends Persistente {
  public ProductoBase() {}
 
  public ProductoBase(String nombre, Double precioBase, String descripcion, String tiempoFabricacion) {
- this.areas = new ArrayList<>();
  this.nombre = nombre;
  this.precioBase = precioBase;
  this.descripcion = descripcion;
