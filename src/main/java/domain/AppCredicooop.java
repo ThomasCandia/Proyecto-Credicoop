@@ -1,8 +1,7 @@
 package domain;
 
 import domain.model.entities.producto.Area;
-import domain.model.entities.producto.ProductoBase;
-import domain.repositories.RepoProductoBaseSpring;
+import domain.repositories.RepoProductoBase;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +16,9 @@ import org.springframework.context.annotation.Bean;
   }
 
   @Bean
-  public CommandLineRunner ejemplo(RepoProductoBaseSpring repo) {
+  public CommandLineRunner ejemplo(RepoProductoBase repo) {
       return (args) -> {
-        //Poner mas decimales
+
        /* Area area1 = new Area("atras");
         Area area2 = new Area("atras");
         ProductoBase remera1 = new ProductoBase("Remera", 12.68,"negra","2 meses");
