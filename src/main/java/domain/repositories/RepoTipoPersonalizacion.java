@@ -8,11 +8,12 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 @RepositoryRestResource(path = "tipopersonalizacion")
 public interface RepoTipoPersonalizacion extends JpaRepository<TipoPersonalizacion, Integer> {
+
   @RestResource(exported = false)
   void deleteById(Integer id);
 
   @RestResource(exported = false)
-  void delete(Area area);
+  void delete(TipoPersonalizacion tipoPersonalizacion);
 
 
 }

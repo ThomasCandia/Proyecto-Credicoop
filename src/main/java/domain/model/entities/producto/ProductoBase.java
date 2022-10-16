@@ -3,6 +3,7 @@ package domain.model.entities.producto;
 import domain.model.entities.Persistente;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,8 +27,10 @@ public class ProductoBase extends Persistente {
   @Column(name = "Tiempo_Fabricacion")
   private String tiempoFabricacion;
 
+
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "Producto_Base_id", referencedColumnName = "id")
+  @RestResource(exported = false)
   private List<Area> areas;
 
  public ProductoBase() {}
@@ -37,6 +40,7 @@ public class ProductoBase extends Persistente {
  this.precioBase = precioBase;
  this.descripcion = descripcion;
  this.tiempoFabricacion = tiempoFabricacion;
+ this.areas = new ArrayList<>();
 }
   public void agregarArea(Area area){
    this.areas.add(area);
