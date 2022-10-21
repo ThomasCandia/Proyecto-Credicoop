@@ -25,7 +25,8 @@ public class Vendedor extends Persistente {
   private Tienda tienda;
 
   @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-  private List<MetodoDePago> metodoDePagos;
+  //TODO CAMBIAR
+  private List<MetodoDePago> metodosDePagos;
 
   @OneToMany
   private List<ProductoPersonalizado> productosPersonalizados;
@@ -33,7 +34,7 @@ public class Vendedor extends Persistente {
   public Vendedor() {}
 
   public Vendedor(Tienda tienda) {
-    this.metodoDePagos = new ArrayList<>();
+    this.metodosDePagos = new ArrayList<>();
     this.productosPersonalizados = new ArrayList<>();
     this.tienda = tienda;
   }

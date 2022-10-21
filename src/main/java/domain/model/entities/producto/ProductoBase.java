@@ -35,7 +35,7 @@ public class ProductoBase extends Persistente {
 
  public ProductoBase() {}
 
- public ProductoBase(String nombre, Double precioBase, String descripcion, String tiempoFabricacion) {
+ public ProductoBase(String nombre, Double precioBase, String descripcion, String tiempoFabricacion, List<Area>areas) {
  this.nombre = nombre;
  this.precioBase = precioBase;
  this.descripcion = descripcion;
@@ -46,4 +46,10 @@ public class ProductoBase extends Persistente {
    this.areas.add(area);
   }
 
+  public boolean validarPersonalizacion(Personalizacion personalizacion)
+  {
+    return this.areas.stream().anyMatch(area -> area.validarPersonalizacion(personalizacion));
+  }
 }
+
+

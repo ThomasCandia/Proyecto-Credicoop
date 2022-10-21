@@ -31,7 +31,7 @@ public class productoBaseController {
 
       return ResponseEntity.ok("materia borrada");
     }
-      return new ResponseEntity<Object>("La materia no existe", HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<Object>("La materia no existe", HttpStatus.NOT_FOUND);
 
   }
 

@@ -15,15 +15,20 @@ public class Comprador extends Persistente {
   private List<CarritoDeCompra> carritosDeCompra;
 
 
-  public Comprador(CarritoDeCompra carritoDeCompra) {
-    this.compras = new ArrayList<>();
-    this.carritoDeCompra = carritoDeCompra;
+  public Comprador() {
+    this.carritosDeCompra = new ArrayList<>();
+  }
+  
+  public CarritoDeCompra getCarritoActual() {
+    int tamanio = this.carritosDeCompra.size();
+    return this.carritosDeCompra.get(tamanio-1);
   }
 
   // TODO agregar item iría en el comprador tambien?
   /*public void agregarItem(Item item) {
 
-    this.carritoDeCompra.agregarProducto(item);
-  }
+
+
+  }*/
 
 }

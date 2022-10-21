@@ -4,8 +4,11 @@ import domain.model.entities.Persistente;
 import domain.model.entities.vendedor.Vendedor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,13 +16,16 @@ import java.util.List;
 @Setter @Getter
 public class ProductoPersonalizado extends Persistente {
 
+  //@NotNull
   @ManyToOne
   private ProductoBase productoBase;
 
  @OneToMany
  @JoinColumn(name = "Producto_Personalizado_id", referencedColumnName = "id")
+ @RestResource(exported = false)
   private List<Personalizacion> personalizaciones;
 
+ @NotNull
  @ManyToOne
  @JoinColumn(name = "vendedor_id")
  private Vendedor vendedor;
@@ -39,4 +45,9 @@ public class ProductoPersonalizado extends Persistente {
   public Double precioDeLasPersonalizaciones() {
       return this.personalizaciones.stream().mapToDouble(p -> p.getPrecio()).sum();
   }
+
+  public void agregarPersonalizacion(Personalizacion personalizacion) {
+    this.personalizaciones.add(personalizacion);
+  }
+
 }

@@ -2,6 +2,7 @@ package domain.model.entities.comprador;
 
 import domain.model.entities.Persistente;
 import domain.model.entities.vendedor.MetodoDePago;
+import domain.model.entities.vendedor.Vendedor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,11 +24,17 @@ Compra extends Persistente {
   @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id")
   private MetodoDePago metodoDePago;
 
-  @OneToMany
-  private Set<Item> itemsComprados;
+  @OneToOne
+  private CarritoDeCompra carritoDeCompra;
 
   @OneToMany
   private List<RegistroEstadoCompra> registroEstadosCompra;
+
+  @ManyToOne
+  private Comprador comprador;
+
+  @ManyToOne
+  private Vendedor vendedor;
 
   public Compra() {}
 
@@ -40,9 +47,7 @@ Compra extends Persistente {
     return this.registroEstadosCompra.get(tamanio-1);
   }
 
-  public void agregarItem(Item item){
-    itemsComprados.add(item);
-  }
+//TODO HACER EL CALCULO DEL PRECIO FINAL
 
   //TODO hacer la factura acá
   //public getFactura();
