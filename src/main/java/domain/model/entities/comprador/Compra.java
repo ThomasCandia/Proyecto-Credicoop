@@ -16,7 +16,6 @@ import java.util.Set;
 @Entity
 @Table(name = "Compras")
 @Getter @Setter
-//TODO CONSTRUCTORES
 public class
 Compra extends Persistente {
 
@@ -34,7 +33,6 @@ Compra extends Persistente {
 
   public Compra(MetodoDePago metodoDePago) {
     this.metodoDePago = metodoDePago;
-    this.itemsComprados = new HashSet<>();
   }
 
   public RegistroEstadoCompra getEstadoActual(){
@@ -46,6 +44,6 @@ Compra extends Persistente {
     itemsComprados.add(item);
   }
 
-  //TODO fijarse si hacer la factura acá
+  //TODO hacer la factura acá
   //public getFactura();
 }

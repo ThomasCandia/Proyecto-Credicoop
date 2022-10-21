@@ -24,12 +24,19 @@ public class ProductoPersonalizado extends Persistente {
  @JoinColumn(name = "vendedor_id")
  private Vendedor vendedor;
 
+  public ProductoPersonalizado() {}
+
+  public ProductoPersonalizado(ProductoBase productoBase, Vendedor vendedor) {
+    this.productoBase = productoBase;
+    this.vendedor = vendedor;
+    this.personalizaciones = new ArrayList<>();
+  }
 
   public Double calcularPrecioFinal(){
     return productoBase.getPrecioBase() + this.precioDeLasPersonalizaciones();
   }
 
-  public Double precioDeLasPersonalizaciones(){
+  public Double precioDeLasPersonalizaciones() {
       return this.personalizaciones.stream().mapToDouble(p -> p.getPrecio()).sum();
   }
 }

@@ -40,7 +40,7 @@ public class ProductoBase extends Persistente {
  this.precioBase = precioBase;
  this.descripcion = descripcion;
  this.tiempoFabricacion = tiempoFabricacion;
- this.areas = new ArrayList<>();
+ this.areas = areas;
 }
   public void agregarArea(Area area){
    this.areas.add(area);

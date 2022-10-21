@@ -11,20 +11,17 @@ import java.util.List;
 @Table(name = "Comprador")
 public class Comprador extends Persistente {
 
-  @OneToOne(cascade = CascadeType.PERSIST)
-  private CarritoDeCompra carritoDeCompra;
+  @ManyToMany
+  private List<CarritoDeCompra> carritosDeCompra;
 
-  @OneToMany
-  private List<Compra> compras;
-
-  public Comprador() {}
 
   public Comprador(CarritoDeCompra carritoDeCompra) {
     this.compras = new ArrayList<>();
     this.carritoDeCompra = carritoDeCompra;
   }
 
-  public void agregarProducto(Item item) {
+  // TODO agregar item iría en el comprador tambien?
+  /*public void agregarItem(Item item) {
 
     this.carritoDeCompra.agregarProducto(item);
   }

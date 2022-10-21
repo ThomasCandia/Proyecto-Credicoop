@@ -32,4 +32,7 @@ public class Area extends Persistente {
   }
 
 
+  public Boolean validarPersonalizacion(Personalizacion personalizacion) {
+    return this.tiposPersonalizacion.stream().anyMatch(tipoP -> tipoP.equals(personalizacion.getTipoPersonalizacion()));
+  }
 }
