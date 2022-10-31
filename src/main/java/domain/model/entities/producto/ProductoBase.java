@@ -27,15 +27,13 @@ public class ProductoBase extends Persistente {
   @Column(name = "Tiempo_Fabricacion")
   private String tiempoFabricacion;
 
-
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "Producto_Base_id", referencedColumnName = "id")
-  @RestResource(exported = false)
-  private List<Area> areas;
+  @JoinColumn(name = "ProductoBase_id", referencedColumnName = "id")
+  private List<AreaPorProductoBase> areas;
 
  public ProductoBase() {}
 
- public ProductoBase(String nombre, Double precioBase, String descripcion, String tiempoFabricacion, List<Area>areas) {
+ public ProductoBase(String nombre, Double precioBase, String descripcion, String tiempoFabricacion, List<AreaPorProductoBase> areas) {
  this.nombre = nombre;
  this.precioBase = precioBase;
  this.descripcion = descripcion;

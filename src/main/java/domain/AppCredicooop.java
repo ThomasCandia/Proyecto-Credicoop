@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
   }
 
   @Bean
-  public CommandLineRunner ejemplo(RepoProductoBase repo) {
+  public CommandLineRunner ejemplo() {
       return (args) -> {
 
        /* Area area1 = new Area("atras");

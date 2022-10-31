@@ -1,7 +1,14 @@
 package domain.controllercomplement;
 
+import domain.DTOs.AreaPorProductoBaseDTO;
+import domain.DTOs.ProductoBaseDTO;
+import domain.model.entities.producto.Area;
+import domain.model.entities.producto.AreaPorProductoBase;
 import domain.model.entities.producto.ProductoBase;
+import domain.model.entities.producto.TipoPersonalizacion;
+import domain.repositories.RepoArea;
 import domain.repositories.RepoProductoBase;
+import domain.repositories.RepoTipoPersonalizacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.HttpStatus;

@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import java.util.Optional;
+
 @RepositoryRestResource(path = "tipopersonalizacion")
 public interface RepoTipoPersonalizacion extends JpaRepository<TipoPersonalizacion, Integer> {
 
@@ -14,6 +16,5 @@ public interface RepoTipoPersonalizacion extends JpaRepository<TipoPersonalizaci
 
   @RestResource(exported = false)
   void delete(TipoPersonalizacion tipoPersonalizacion);
-
 
 }

@@ -1,20 +1,33 @@
 package domain.DTOs;
 
-import domain.model.entities.producto.ProductoBase;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.rest.core.config.Projection;
+import domain.model.entities.producto.AreaPorProductoBase;
+import lombok.Getter;
+import lombok.Setter;
 
-@Projection(name="productoBase",types = {ProductoBase.class})
-public interface ProductoBaseDTO {
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
-  @Value("#{target.nombre} #{target.descripcion}")
-  String getProducto();
+@Getter
+@Setter
+public class ProductoBaseDTO {
 
-  @Value("#{target.precioBase}")
-  int getPrecio();
+  private String nombre;
 
-  @Value("#{target.tiempoFabricacion}")
-  String getTiempoDeFabricacion();
+  private Double precioBase;
 
+  private String descripcion;
+
+  private String tiempoFabricacion;
+
+  private List<AreaPorProductoBaseDTO> areasPorProductoBase;
+
+  public ProductoBaseDTO() {}
+
+  public ProductoBaseDTO(String nombre, Double precioBase, String descripcion, String tiempoFabricacion, List<AreaPorProductoBaseDTO> areasPorProductoBase) {
+    this.nombre = nombre;
+    this.precioBase = precioBase;
+    this.descripcion = descripcion;
+    this.tiempoFabricacion = tiempoFabricacion;
+    this.areasPorProductoBase = areasPorProductoBase;
+  }
 }
-

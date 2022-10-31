@@ -20,12 +20,12 @@ public class ProductoPersonalizado extends Persistente {
   @ManyToOne
   private ProductoBase productoBase;
 
- @OneToMany
+ @OneToMany(cascade = CascadeType.PERSIST)
  @JoinColumn(name = "Producto_Personalizado_id", referencedColumnName = "id")
  @RestResource(exported = false)
   private List<Personalizacion> personalizaciones;
 
- @NotNull
+ //TODO quizas ya no hace falta que tenga un vendedor
  @ManyToOne
  @JoinColumn(name = "vendedor_id")
  private Vendedor vendedor;
