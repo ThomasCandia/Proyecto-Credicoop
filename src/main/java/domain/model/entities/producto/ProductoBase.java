@@ -40,14 +40,16 @@ public class ProductoBase extends Persistente {
  this.tiempoFabricacion = tiempoFabricacion;
  this.areas = areas;
 }
-  public void agregarArea(Area area){
+  public void agregarAreaPorProductoBase(AreaPorProductoBase area){
    this.areas.add(area);
   }
 
-  public boolean validarPersonalizacion(Personalizacion personalizacion)
+ /*
+ public boolean validarPersonalizacion(Personalizacion personalizacion)
   {
     return this.areas.stream().anyMatch(area -> area.validarPersonalizacion(personalizacion));
   }
+  */
 }
 
 
