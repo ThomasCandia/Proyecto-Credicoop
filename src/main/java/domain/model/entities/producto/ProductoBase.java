@@ -1,5 +1,6 @@
 package domain.model.entities.producto;
 
+import domain.DTOs.PersonalizacionDTO;
 import domain.model.entities.Persistente;
 import lombok.Getter;
 import lombok.Setter;

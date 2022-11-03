@@ -115,6 +115,4 @@ public class productoBaseController {
     else return new ResponseEntity<Object>("El area no existe", HttpStatus.NOT_FOUND);
   }
 
-
-
 }

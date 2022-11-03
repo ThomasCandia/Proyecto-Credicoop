@@ -33,6 +33,3 @@ public class Personalizacion extends Persistente {
     this.areaPersonalizable = areaPersonalizable;
   }
 }
-
-// TODO validacion : Fijarme si el area acepta el tipo de personalizacion y despues fijarme si
-// el producto base contiene al area de la personalizacion

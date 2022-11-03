@@ -30,7 +30,9 @@ public class ProductoPersonalizado extends Persistente {
  @JoinColumn(name = "vendedor_id")
  private Vendedor vendedor;
 
-  public ProductoPersonalizado() {}
+  public ProductoPersonalizado() {
+    this.personalizaciones = new ArrayList<>();
+  }
 
   public ProductoPersonalizado(ProductoBase productoBase, Vendedor vendedor) {
     this.productoBase = productoBase;
