@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,6 +25,15 @@ public class productoPersonalizadoController {
 
   @Autowired
   RepoProductoBase repoProductoBase;
+
+  @Autowired
+  RepoArea repoArea;
+
+  @Autowired
+  RepoTipoPersonalizacion repoTipoPersonalizacion;
+
+  @Autowired
+  RepoVendedor repoVendedor;
 
   @Transactional
   @PostMapping("/vendedores/{vendedorID}/productospersonalizados")

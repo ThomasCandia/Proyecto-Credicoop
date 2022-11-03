@@ -34,7 +34,7 @@ public class AreaPorProductoBase extends Persistente {
   }
 
   public Boolean validarPersonalizacion(Personalizacion personalizacion) {
-    return this.tiposPersonalizacion.stream().anyMatch(tipoP -> tipoP.equals(personalizacion.getTipoPersonalizacion()));
+    return personalizacion.getAreaPersonalizable().equals(this.area) && this.tiposPersonalizacion.stream().anyMatch(tipoP -> tipoP.equals(personalizacion. getTipoPersonalizacion()));
   }
 
 }

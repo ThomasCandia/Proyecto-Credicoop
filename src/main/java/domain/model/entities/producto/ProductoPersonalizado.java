@@ -34,10 +34,10 @@ public class ProductoPersonalizado extends Persistente {
     this.personalizaciones = new ArrayList<>();
   }
 
-  public ProductoPersonalizado(ProductoBase productoBase, Vendedor vendedor) {
+  public ProductoPersonalizado(ProductoBase productoBase, Vendedor vendedor,List<Personalizacion>personalizaciones) {
     this.productoBase = productoBase;
     this.vendedor = vendedor;
-    this.personalizaciones = new ArrayList<>();
+    this.personalizaciones = personalizaciones;
   }
 
   public Double calcularPrecioFinal(){

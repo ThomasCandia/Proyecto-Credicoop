@@ -45,12 +45,17 @@ public class ProductoBase extends Persistente {
    this.areas.add(area);
   }
 
- /*
- public boolean validarPersonalizacion(Personalizacion personalizacion)
+
+  public Boolean validarPersos(List<Personalizacion> personalizaciones)
   {
-    return this.areas.stream().anyMatch(area -> area.validarPersonalizacion(personalizacion));
+    //return this.areas.stream().anyMatch(areaPorProductoBase -> areaPorProductoBase.validarPersonalizacion(personalizacion));
+    for(Personalizacion personalizacion:personalizaciones)
+    {
+      this.areas.stream().anyMatch(areaPorProductoBase -> areaPorProductoBase.validarPersonalizacion(personalizacion));
+    }
+      return personalizaciones.stream().allMatch(personalizacion -> this.areas.stream().anyMatch(areaPorProductoBase -> areaPorProductoBase.validarPersonalizacion(personalizacion)));
   }
-  */
+
 }
 
 
