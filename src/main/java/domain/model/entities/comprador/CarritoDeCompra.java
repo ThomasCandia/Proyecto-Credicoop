@@ -11,6 +11,8 @@ import java.util.List;
 @Table(name = "CarritoDeCompra")
 public class CarritoDeCompra extends Persistente {
 
+  //ATRIBUTOS
+
   @ManyToMany(fetch = FetchType.EAGER)
   private List<Item> itemsAComprar;
 
