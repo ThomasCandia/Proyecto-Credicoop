@@ -24,5 +24,10 @@ public class RegistroEstadoCompra extends Persistente {
   private Compra compra;
 
 
-
+  public RegistroEstadoCompra(LocalDate fechaCompra, LocalTime horaCompra, EstadoCompra estadoCompra, Compra compra) {
+    this.fechaCompra = fechaCompra;
+    this.horaCompra = horaCompra;
+    this.estadoCompra = estadoCompra;
+    this.compra = compra;
+  }
 }

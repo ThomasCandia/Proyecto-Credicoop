@@ -21,6 +21,7 @@ public class Comprador extends Persistente {
 
   public Comprador() {
     this.carritosDeCompra = new ArrayList<>();
+    this.carritosDeCompra.add(new CarritoDeCompra());
   }
 
 

@@ -17,8 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Compras")
 @Getter @Setter
-public class
-Compra extends Persistente {
+public class Compra extends Persistente {
 
   @ManyToOne
   @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id")
@@ -36,10 +35,16 @@ Compra extends Persistente {
   @ManyToOne
   private Vendedor vendedor;
 
-  public Compra() {}
+  public Compra() {
+    this.registroEstadosCompra = new ArrayList<>();
+  }
 
-  public Compra(MetodoDePago metodoDePago) {
+  public Compra(MetodoDePago metodoDePago, CarritoDeCompra carritoDeCompra, Comprador comprador, Vendedor vendedor) {
     this.metodoDePago = metodoDePago;
+    this.carritoDeCompra = carritoDeCompra;
+    this.comprador = comprador;
+    this.vendedor = vendedor;
+    this.registroEstadosCompra = new ArrayList<>();
   }
 
   public RegistroEstadoCompra getEstadoActual(){
@@ -47,7 +52,9 @@ Compra extends Persistente {
     return this.registroEstadosCompra.get(tamanio-1);
   }
 
-//TODO HACER EL CALCULO DEL PRECIO FINAL
+  public Double precioCompra(){
+    return this.carritoDeCompra.calcularTotal();
+  }
 
   //TODO hacer la factura acá
   //public getFactura();
