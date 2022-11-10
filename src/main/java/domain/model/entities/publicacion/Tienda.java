@@ -16,8 +16,7 @@ public class Tienda extends Persistente {
   @JoinColumn(name = "Tienda_id", referencedColumnName = "id")
   private List<Publicacion> publicaciones;
 
-  public Tienda()
-  {
+  public Tienda() {
     this.publicaciones = new ArrayList<>();
   }
 

@@ -1,5 +1,6 @@
 package domain.controllercomplement;
 
+import domain.DTOs.CompraDTO;
 import domain.DTOs.PersonalizacionDTO;
 import domain.DTOs.ProductoPersonalizadoDTO;
 import domain.model.entities.producto.*;
@@ -35,7 +36,7 @@ public class productoPersonalizadoController {
   @Autowired
   RepoVendedor repoVendedor;
 
-  @Transactional
+  @Transactional //TODO preguntar path
   @PostMapping("/vendedores/{vendedorID}/productospersonalizados")
   public @ResponseBody
   ResponseEntity<Object> crearProductoPersonalizado(@PathVariable("vendedorID") Integer vendedorID,
@@ -70,6 +71,8 @@ public class productoPersonalizadoController {
 
             ProductoPersonalizado productoPersonalizado = new ProductoPersonalizado(productoBaseOptional.get(),vendedor.get(), personalizacionList);
             repoProductoPersonalizado.save(productoPersonalizado);
+            vendedor.get().agregarProducto(productoPersonalizado);
+
             return new ResponseEntity<Object>("El producto personalizado fue creado con éxito", HttpStatus.CREATED);
 
           } else
@@ -82,6 +85,8 @@ public class productoPersonalizadoController {
     else return new ResponseEntity<>("El vendedor no existe",HttpStatus.NOT_FOUND);
   }
 }
+
+
 
 
 

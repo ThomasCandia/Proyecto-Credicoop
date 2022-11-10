@@ -87,15 +87,16 @@ public class compradorController {
 
   @Transactional
   @PostMapping("/comprador/{compradorID}/compra")
-  @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO)
-  {
-    Optional<Comprador> comprador = repoComprador.findById(compradorID);
-    Optional<MetodoDePago> metodoDePagoElegido = repoMetodoDePago.findById(compraDTO.getMetodoDePagoID());
+  @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO) {
+
+    Optional<Comprador> comprador = repoComprador.findCompradorById(compradorID);
+    Optional<MetodoDePago> metodoDePagoElegido = repoMetodoDePago.findById(compraDTO.getMetodoDePagoId());
     Vendedor vendedorElegido = comprador.get().getCarritoActual().getVendedorElegido();
 
-    if(comprador.isPresent())
-    {
+    //VALIDO SI EL COMPRADOR EXISTE
+    if(comprador.isPresent()) {
 
+  //VALIDO SI EXISTE EL METODO DE PAGO
       if(metodoDePagoElegido.isPresent()) {
 
     //VALIDO SI EL VENDEDOR ACEPTA EL METODO DE PAGO SELECCIONADO
@@ -115,6 +116,7 @@ public class compradorController {
           return new ResponseEntity<>("La compra fue realizada con éxito", HttpStatus.CREATED);
 
         }
+        return new ResponseEntity<>("EL VENDEDOR NO ACEPTA EL METODO DE PAGO ", HttpStatus.BAD_REQUEST);
 
       }
 

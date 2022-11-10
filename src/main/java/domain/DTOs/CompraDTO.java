@@ -10,7 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Getter@Setter
 public class CompraDTO {
 
-  private Integer metodoDePagoID;
+  private Integer metodoDePagoId;
 
 
 }

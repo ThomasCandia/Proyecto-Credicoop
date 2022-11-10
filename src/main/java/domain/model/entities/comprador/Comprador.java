@@ -3,6 +3,7 @@ package domain.model.entities.comprador;
 import domain.model.entities.Persistente;
 import domain.model.entities.producto.ProductoPersonalizado;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Comprador")
-@Getter
+@Getter@Setter
 public class Comprador extends Persistente {
 
   @OneToMany
