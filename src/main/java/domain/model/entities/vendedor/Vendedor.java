@@ -31,12 +31,18 @@ public class Vendedor extends Persistente {
   @OneToMany
   private List<ProductoPersonalizado> productosPersonalizados;
 
-  public Vendedor() {}
-
-  public Vendedor(Tienda tienda) {
+  public Vendedor() {
     this.metodosDePagos = new ArrayList<>();
     this.productosPersonalizados = new ArrayList<>();
-    this.tienda = tienda;
   }
+
+  public Vendedor(String nombre, String apellido, Tienda tienda, List<MetodoDePago> metodosDePagos) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.tienda = tienda;
+    this.metodosDePagos = metodosDePagos;
+    this.productosPersonalizados = new ArrayList<>();
+  }
+
 
 }

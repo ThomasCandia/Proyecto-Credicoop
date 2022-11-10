@@ -98,6 +98,7 @@ public class compradorController {
 
       if(metodoDePagoElegido.isPresent()) {
 
+    //VALIDO SI EL VENDEDOR ACEPTA EL METODO DE PAGO SELECCIONADO
         if(vendedorElegido.getMetodosDePagos().contains(metodoDePagoElegido.get())) {
 
           LocalDate fechaDeHoy = LocalDate.now();

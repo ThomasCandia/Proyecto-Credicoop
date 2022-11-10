@@ -14,6 +14,6 @@ public interface RepoCompra extends JpaRepository<Compra,Integer> {
   void deleteById(Integer id);
 
   @RestResource(exported = false)
-  void delete(MetodoDePago metodoDePago);
+  void delete(Compra compra);
 
 }
