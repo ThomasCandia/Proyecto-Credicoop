@@ -17,6 +17,4 @@ public interface RepoComprador extends JpaRepository<Comprador, Integer> {
   @RestResource(exported = false)
   void delete(Comprador comprador);
 
-  Optional<Comprador>findCompradorById(Integer id);
-
 }

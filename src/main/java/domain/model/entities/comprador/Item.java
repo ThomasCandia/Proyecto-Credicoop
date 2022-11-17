@@ -15,7 +15,7 @@ public class Item extends Persistente {
   @Column(name = "cantidad")
   private int cantidad;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "producto_personalizado_id", referencedColumnName = "id")
   private ProductoPersonalizado productoPersonalizado;
 

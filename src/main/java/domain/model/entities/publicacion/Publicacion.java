@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Publicacion")
-@Setter @Getter
+@Setter@Getter
 public class Publicacion extends Persistente {
 
   @Column(name = "nombre")

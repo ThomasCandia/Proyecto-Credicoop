@@ -38,8 +38,7 @@ public class productoPersonalizadoController {
 
   @Transactional
   @PostMapping("/vendedores/{vendedorID}/productospersonalizados")
-  public @ResponseBody
-  ResponseEntity<Object> crearProductoPersonalizado(@PathVariable("vendedorID") Integer vendedorID,
+  public @ResponseBody ResponseEntity<Object> crearProductoPersonalizado(@PathVariable("vendedorID") Integer vendedorID,
                                                     @RequestBody ProductoPersonalizadoDTO productoPersonalizadoDTO) {
 
 
@@ -90,24 +89,3 @@ public class productoPersonalizadoController {
 
 
 
-    //boolean existe = repoProductoBase.existsById(productoPersonalizado.getProductoBase().getId());
-
-
-    //VALIDACIONES
-
-   //if(existe) {
-
-      // 2° VALIDAR QUE LAS PERSONALIZACIONES SEAN ACEPTADAS EN LAS AREAS
-
-     // List<Personalizacion> personalizaciones = productoPersonalizado.getPersonalizaciones();
-     // boolean valid = personalizaciones.stream().allMatch(personalizacion -> productoPersonalizado.getProductoBase().validarPersonalizacion(personalizacion));
-
-      //if (valid) {
-        //repoProductoPersonalizado.save(productoPersonalizado);
-        //return new ResponseEntity<Object>("Creado con exito", HttpStatus.CREATED);
-     // } else {
-      //  return new ResponseEntity<Object>("No es posible esa personalizacion", HttpStatus.BAD_REQUEST);
-     // }
-    //}
-
-    //return new ResponseEntity<Object>("El producto base no existe", HttpStatus.NOT_FOUND);

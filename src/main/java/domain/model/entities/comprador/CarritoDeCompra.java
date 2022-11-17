@@ -2,6 +2,8 @@ package domain.model.entities.comprador;
 
 import domain.model.entities.Persistente;
 import domain.model.entities.vendedor.Vendedor;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import javax.persistence.*;
@@ -12,22 +14,16 @@ import java.util.stream.Stream;
 
 @Entity
 @Table(name = "CarritoDeCompra")
-public class CarritoDeCompra extends Persistente {
+@Getter@Setter
+public class CarritoDeCompra extends Persistente{
 
-  //ATRIBUTOS
 
-  @ManyToMany(fetch = FetchType.EAGER)
+  @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
   private List<Item> itemsAComprar;
-
-
-  //CONSTRUCTORES
 
   public CarritoDeCompra() {
     this.itemsAComprar = new ArrayList<>();
   }
-
-  //METODOS
-
 
   public void agregarProducto(Item item) throws Exception {
 
@@ -36,7 +32,7 @@ public class CarritoDeCompra extends Persistente {
       this.itemsAComprar.add(item);
     }
     // VALIDAMOS SI EL VENDEDOR DEL ITEM A AGREGAR ES EL MISMO DEL ULTIMO ITEM AGREGADO
-    else if(this.getUltimoItem().getProductoPersonalizado().getVendedor() == item.getProductoPersonalizado().getVendedor()){
+    else if( this.ultimoItem().getProductoPersonalizado().getVendedor().equals(item.getProductoPersonalizado().getVendedor()) ){
       this.itemsAComprar.add(item);
       //TODO heredar excepciones para que queden nombres lindos
     } else throw new Exception("El item ingresado no es del mismo vendedor");
@@ -60,12 +56,12 @@ public class CarritoDeCompra extends Persistente {
     return this.itemsAComprar.stream().mapToDouble(Item::calcularPrecio).sum();
   }
 
-  public Item getUltimoItem(){
+  public Item ultimoItem(){
     return this.itemsAComprar.get(itemsAComprar.size()-1);
   }
 
-  public Vendedor getVendedorElegido()
+  public Vendedor vendedorElegido()
   {
-    return this.getUltimoItem().getProductoPersonalizado().getVendedor();
+    return this.ultimoItem().getProductoPersonalizado().getVendedor();
   }
 }

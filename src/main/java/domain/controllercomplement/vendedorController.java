@@ -39,11 +39,12 @@ public class vendedorController {
     List<Optional<MetodoDePago>> listaDeMetodosDePagoOptional = listaDeMetodosDePagoIDs.stream().map(pago -> repoMetodoDePago.findById(pago)).collect(Collectors.toList());
 
     //VALIDAMOS LOS METODOS DE PAGO
-    if(listaDeMetodosDePagoOptional.stream().allMatch(metodo -> metodo.isPresent()))
-    {
+    if(listaDeMetodosDePagoOptional.stream().allMatch(metodo -> metodo.isPresent())) {
       List<MetodoDePago> listaDeMetodosDePago = listaDeMetodosDePagoOptional.stream().map(pago -> pago.get()).collect(Collectors.toList());
 
-      Vendedor nuevoVendedor = new Vendedor(vendedorDTO.getNombre(),vendedorDTO.getApellido(),new Tienda(),listaDeMetodosDePago);
+      Tienda nuevaTienda = new Tienda();
+
+      Vendedor nuevoVendedor = new Vendedor(vendedorDTO.getNombre(),vendedorDTO.getApellido(),listaDeMetodosDePago); //TODO arreglar tienda
       repoVendedor.save(nuevoVendedor);
 
       return new ResponseEntity<Object>("El vendedor fue creado con éxito", HttpStatus.CREATED);

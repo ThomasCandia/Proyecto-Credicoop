@@ -20,17 +20,8 @@ import org.springframework.context.annotation.Bean;
   }
 
   @Bean
-  public CommandLineRunner ejemplo(RepoVendedor repoVendedor) {
+  public CommandLineRunner ejemplo() {
       return (args) -> {
-
-        // Vendedor
-        Vendedor vendedorPrueba = new Vendedor("Thomas","C",null,null);
-        repoVendedor.save(vendedorPrueba);
-
-        // AREAS
-
-        //Area area1 = new Area("Atras");
-       // Area area2 = new Area("Adelante");
 
         // METODOS DE PAGO
 

@@ -15,7 +15,10 @@ import java.util.List;
 @Getter@Setter
 public class Comprador extends Persistente {
 
-  @OneToMany
+  @Column(name = "nombre")
+  private String nombre;
+
+  @OneToMany(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "Comprador_id", referencedColumnName = "id")
   private List<CarritoDeCompra> carritosDeCompra;
 

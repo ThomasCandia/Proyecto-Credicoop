@@ -35,7 +35,7 @@ public class compradorController {
 
   @Transactional
   @PostMapping("/comprador/{compradorID}/carritodecompra/items")
-  @ResponseBody ResponseEntity<Object> agregarItem(@PathVariable ("compradorID") Integer compradorID,
+  public @ResponseBody ResponseEntity<Object> agregarItem(@PathVariable ("compradorID") Integer compradorID,
                                                    @RequestBody ItemDTO itemDTO) throws Exception {
 
     Optional<Comprador> comprador = repoComprador.findById(compradorID);
@@ -56,7 +56,7 @@ public class compradorController {
 
   @Transactional
   @DeleteMapping("/comprador/{compradorID}/carritodecompra/items")
-  @ResponseBody ResponseEntity<Object> borrarItem(@PathVariable ("compradorID") Integer compradorID,
+  public @ResponseBody ResponseEntity<Object> borrarItem(@PathVariable ("compradorID") Integer compradorID,
                                                    @RequestBody Integer itemID) throws Exception {
 
     Optional<Comprador> comprador = repoComprador.findById(compradorID);
@@ -74,7 +74,7 @@ public class compradorController {
 
   @Transactional
   @GetMapping("/comprador/{compradorID}/carritodecompra")
-  @ResponseBody ResponseEntity<Object> mostrarItems(@PathVariable("compradorID") Integer compradorID)
+  public @ResponseBody ResponseEntity<Object> mostrarItems(@PathVariable("compradorID") Integer compradorID)
   {
     Optional<Comprador> comprador = repoComprador.findById(compradorID);
     if(comprador.isPresent()) {
@@ -87,7 +87,7 @@ public class compradorController {
 
   @Transactional
   @PostMapping("/comprador/{compradorID}/compra")
-  @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO) {
+  public @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO) {
 
     Optional<Comprador> comprador = repoComprador.findById(compradorID);
     Optional<MetodoDePago> metodoDePagoElegido = repoMetodoDePago.findById(compraDTO.getMetodoDePagoId());
@@ -99,7 +99,7 @@ public class compradorController {
       //VALIDO SI EXISTE EL METODO DE PAGO
       if(metodoDePagoElegido.isPresent()) {
 
-        Vendedor vendedorElegido = comprador.get().getCarritoActual().getVendedorElegido();
+        Vendedor vendedorElegido = comprador.get().getCarritoActual().vendedorElegido();
 
         //VALIDO SI EL VENDEDOR ACEPTA EL METODO DE PAGO SELECCIONADO
         if(vendedorElegido.getMetodosDePagos().contains(metodoDePagoElegido.get())) {

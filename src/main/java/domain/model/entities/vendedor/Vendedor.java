@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Vendedor")
-@Setter @Getter
+@Setter@Getter
 public class Vendedor extends Persistente {
 
   @Column(name = "nombre")
