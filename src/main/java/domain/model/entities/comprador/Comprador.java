@@ -28,6 +28,13 @@ public class Comprador extends Persistente {
     this.carritosDeCompra.add(new CarritoDeCompra());
   }
 
+  public Comprador(String nombre)
+  {
+    this.nombre =nombre;
+    this.carritosDeCompra = new ArrayList<>();
+    this.carritosDeCompra.add(new CarritoDeCompra());
+  }
+
 
   public CarritoDeCompra getCarritoActual() {
     int tamanio = this.carritosDeCompra.size();

@@ -35,10 +35,10 @@ public class Vendedor extends Persistente {
     this.productosPersonalizados = new ArrayList<>();
   }
 
-  public Vendedor(String nombre, String apellido, Tienda tienda, List<MetodoDePago> metodosDePagos) {
+  public Vendedor(String nombre, String apellido, List<MetodoDePago> metodosDePagos) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.tienda = tienda;
+    this.tienda = new Tienda();
     this.metodosDePagos = metodosDePagos;
     this.productosPersonalizados = new ArrayList<>();
   }
