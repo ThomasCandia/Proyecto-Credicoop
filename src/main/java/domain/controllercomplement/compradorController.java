@@ -89,17 +89,19 @@ public class compradorController {
   @PostMapping("/comprador/{compradorID}/compra")
   @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO) {
 
-    Optional<Comprador> comprador = repoComprador.findCompradorById(compradorID);
+    Optional<Comprador> comprador = repoComprador.findById(compradorID);
     Optional<MetodoDePago> metodoDePagoElegido = repoMetodoDePago.findById(compraDTO.getMetodoDePagoId());
-    Vendedor vendedorElegido = comprador.get().getCarritoActual().getVendedorElegido();
+
 
     //VALIDO SI EL COMPRADOR EXISTE
     if(comprador.isPresent()) {
 
-  //VALIDO SI EXISTE EL METODO DE PAGO
+      //VALIDO SI EXISTE EL METODO DE PAGO
       if(metodoDePagoElegido.isPresent()) {
 
-    //VALIDO SI EL VENDEDOR ACEPTA EL METODO DE PAGO SELECCIONADO
+        Vendedor vendedorElegido = comprador.get().getCarritoActual().getVendedorElegido();
+
+        //VALIDO SI EL VENDEDOR ACEPTA EL METODO DE PAGO SELECCIONADO
         if(vendedorElegido.getMetodosDePagos().contains(metodoDePagoElegido.get())) {
 
           LocalDate fechaDeHoy = LocalDate.now();

@@ -36,7 +36,7 @@ public class productoPersonalizadoController {
   @Autowired
   RepoVendedor repoVendedor;
 
-  @Transactional //TODO preguntar path
+  @Transactional
   @PostMapping("/vendedores/{vendedorID}/productospersonalizados")
   public @ResponseBody
   ResponseEntity<Object> crearProductoPersonalizado(@PathVariable("vendedorID") Integer vendedorID,

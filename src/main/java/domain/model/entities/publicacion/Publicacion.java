@@ -24,7 +24,9 @@ public class Publicacion extends Persistente {
   @OneToMany(mappedBy = "publicacion")
   private List<RegistroEstadoPublicacion> registrosEstados;
 
-  public Publicacion() {}
+  public Publicacion() {
+    this.registrosEstados = new ArrayList<>();
+  }
 
   public Publicacion(String nombre,ProductoPersonalizado productoPublicado) {
     this.nombre = nombre;

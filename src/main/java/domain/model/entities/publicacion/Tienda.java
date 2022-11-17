@@ -3,13 +3,14 @@ package domain.model.entities.publicacion;
 import domain.model.entities.Persistente;
 import domain.model.entities.publicacion.Publicacion;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Table(name = "Tienda")
-@Getter
+@Getter@Setter
 public class Tienda extends Persistente {
 
   @OneToMany(fetch = FetchType.EAGER)

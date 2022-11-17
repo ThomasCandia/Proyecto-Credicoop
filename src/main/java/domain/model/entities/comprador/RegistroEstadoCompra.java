@@ -1,13 +1,16 @@
 package domain.model.entities.comprador;
 
 import domain.model.entities.Persistente;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table (name = "Resitro_estado_compra")
+@Getter@Setter
+@Table(name = "Resitro_estado_compra")
 public class RegistroEstadoCompra extends Persistente {
 
   @Column(name = "fecha")
@@ -23,6 +26,8 @@ public class RegistroEstadoCompra extends Persistente {
   @JoinColumn(name = "compra_id")
   private Compra compra;
 
+
+  public RegistroEstadoCompra() {}
 
   public RegistroEstadoCompra(LocalDate fechaCompra, LocalTime horaCompra, EstadoCompra estadoCompra, Compra compra) {
     this.fechaCompra = fechaCompra;
