@@ -57,12 +57,17 @@ public class CarritoDeCompra extends Persistente{
     return this.itemsAComprar.stream().mapToDouble(Item::calcularPrecio).sum();
   }
 
-  public Item ultimoItem(){
-    return this.itemsAComprar.get(itemsAComprar.size()-1);
+  public Item ultimoItem() throws Exception {
+    if(this.itemsAComprar.size() <=0){
+      throw new Exception("El carrito está vacio!"); //TODO mejorar excepcion
+    }
+      return this.itemsAComprar.get(itemsAComprar.size()-1);
+
+
+
   }
 
-  public Vendedor vendedorElegido()
-  {
+  public Vendedor vendedorElegido() throws Exception {
     return this.ultimoItem().getProductoPersonalizado().getVendedor();
   }
 }

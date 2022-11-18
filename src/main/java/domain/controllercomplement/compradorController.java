@@ -34,7 +34,7 @@ public class compradorController {
   RepoCompra repoCompra;
 
   @Transactional
-  @PostMapping("/comprador/{compradorID}/carritodecompra/items")
+  @PostMapping("/compradores/{compradorID}/carritodecompra/items")
   public @ResponseBody ResponseEntity<Object> agregarItem(@PathVariable ("compradorID") Integer compradorID,
                                                    @RequestBody ItemDTO itemDTO) throws Exception {
 
@@ -55,7 +55,7 @@ public class compradorController {
   }
 
   @Transactional
-  @DeleteMapping("/comprador/{compradorID}/carritodecompra/items")
+  @DeleteMapping("/compradores/{compradorID}/carritodecompra/items")
   public @ResponseBody ResponseEntity<Object> borrarItem(@PathVariable ("compradorID") Integer compradorID,
                                                    @RequestBody Integer itemID) throws Exception {
 
@@ -73,7 +73,7 @@ public class compradorController {
 
 
   @Transactional
-  @GetMapping("/comprador/{compradorID}/carritodecompra")
+  @GetMapping("/compradores/{compradorID}/carritodecompra")
   public @ResponseBody ResponseEntity<Object> mostrarItems(@PathVariable("compradorID") Integer compradorID)
   {
     Optional<Comprador> comprador = repoComprador.findById(compradorID);
@@ -118,7 +118,7 @@ public class compradorController {
           return new ResponseEntity<>("La compra fue realizada con éxito", HttpStatus.CREATED);
 
         }
-        return new ResponseEntity<>("EL VENDEDOR NO ACEPTA EL METODO DE PAGO ", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("EL VENDEDOR NO ACEPTA EL METODO DE PAGO", HttpStatus.BAD_REQUEST);
 
       }
 
@@ -128,8 +128,6 @@ public class compradorController {
 
     return new ResponseEntity<>("El comprador no existe", HttpStatus.NOT_FOUND);
 
-
   }
-
 
 }

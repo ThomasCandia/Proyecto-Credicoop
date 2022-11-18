@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @Entity
 @Getter@Setter
-@Table(name = "Resitro_estado_compra")
+@Table(name = "Registro_estado_compra")
 public class RegistroEstadoCompra extends Persistente {
 
   @Column(name = "fecha")

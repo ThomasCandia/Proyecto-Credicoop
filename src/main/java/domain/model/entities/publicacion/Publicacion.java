@@ -21,7 +21,7 @@ public class Publicacion extends Persistente {
   private ProductoPersonalizado productoPublicado;
 
   //Bidireccional
-  @OneToMany(mappedBy = "publicacion")
+  @OneToMany(mappedBy = "publicacion",cascade = CascadeType.PERSIST)
   private List<RegistroEstadoPublicacion> registrosEstados;
 
   public Publicacion() {

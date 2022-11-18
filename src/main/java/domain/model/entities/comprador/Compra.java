@@ -26,7 +26,7 @@ public class Compra extends Persistente {
   @OneToOne
   private CarritoDeCompra carritoDeCompra;
 
-  @OneToMany
+  @OneToMany(mappedBy = "compra",cascade = CascadeType.PERSIST)
   private List<RegistroEstadoCompra> registroEstadosCompra;
 
   @ManyToOne
