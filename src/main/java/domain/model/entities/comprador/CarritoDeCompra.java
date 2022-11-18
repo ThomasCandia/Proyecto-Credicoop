@@ -7,7 +7,6 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +15,7 @@ import java.util.stream.Stream;
 @Entity
 @Table(name = "CarritoDeCompra")
 @Getter@Setter
-public class CarritoDeCompra extends Persistente{
+public class CarritoDeCompra extends Persistente {
 
 
   @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)

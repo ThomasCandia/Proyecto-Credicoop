@@ -86,8 +86,8 @@ public class compradorController {
   }
 
   @Transactional
-  @PostMapping("/comprador/{compradorID}/compra")
-  public @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO) {
+  @PostMapping("/compradores/{compradorID}/compra")
+  public @ResponseBody ResponseEntity<Object> comprar(@PathVariable("compradorID") Integer compradorID, @RequestBody CompraDTO compraDTO) throws Exception {
 
     Optional<Comprador> comprador = repoComprador.findById(compradorID);
     Optional<MetodoDePago> metodoDePagoElegido = repoMetodoDePago.findById(compraDTO.getMetodoDePagoId());
