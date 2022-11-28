@@ -24,7 +24,7 @@ public class Vendedor extends Persistente {
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   private Tienda tienda;
 
-  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+  @ManyToMany(fetch = FetchType.LAZY)
   private List<MetodoDePago> metodosDePagos;
 
   @OneToMany
@@ -46,6 +46,10 @@ public class Vendedor extends Persistente {
 
   public void agregarProducto(ProductoPersonalizado productoPersonalizado) {
     this.productosPersonalizados.add(productoPersonalizado);
+  }
+
+  public boolean tieneElProducto(ProductoPersonalizado productoPersonalizado){
+    return this.productosPersonalizados.contains(productoPersonalizado);
   }
 
 }

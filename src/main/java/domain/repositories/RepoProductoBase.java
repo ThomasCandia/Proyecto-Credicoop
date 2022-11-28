@@ -18,8 +18,4 @@ public interface RepoProductoBase extends JpaRepository<ProductoBase, Integer> {
   @RestResource(exported = false)
   void delete(ProductoBase productoBase);
 
-
-  // TODO probar postman con paginas
-  //Page<ProductoBase> findProductoBaseByNombre(String nombre, Pageable pageable);
-
 }

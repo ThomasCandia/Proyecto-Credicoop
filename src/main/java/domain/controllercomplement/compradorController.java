@@ -1,7 +1,6 @@
 package domain.controllercomplement;
 
-import domain.DTOs.CompraDTO;
-import domain.DTOs.ItemDTO;
+import domain.DTOs.*;
 import domain.model.entities.comprador.*;
 import domain.model.entities.producto.ProductoPersonalizado;
 import domain.model.entities.vendedor.MetodoDePago;
@@ -18,8 +17,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static domain.model.entities.comprador.EstadoCompra.*;
 
 @RepositoryRestController
 public class compradorController {
@@ -110,22 +115,33 @@ public class compradorController {
 
           nuevaCompra.getRegistroEstadosCompra().add(new RegistroEstadoCompra(fechaDeHoy, PENDIENTE,nuevaCompra));
 
-          repoCompra.save(nuevaCompra); //TODO ver si le asigna el id al registro
+          repoCompra.save(nuevaCompra);
+
+          // REALIZAMOS LA FACTURA
+
+          List<ItemDTO2> itemsCarrito = comprador.get().getCarritoActual().getItemsAComprar().stream().map(item -> new ItemDTO2(item.getCantidad(),new ProductoPersonalizadoDTO2(item.getProductoPersonalizado().getProductoBase().getNombre(),item.getProductoPersonalizado().calcularPrecioFinal()),item.calcularPrecio())).collect(Collectors.toList());
+
+
+          Double precioTotal = comprador.get().getCarritoActual().calcularTotal();
+
+          FacturaDTO factura = new FacturaDTO(metodoDePagoElegido.get().getMetodoDePago(),
+              comprador.get().getNombre(),itemsCarrito,new RegistroCompraDTO(fechaDeHoy, PENDIENTE),vendedorElegido.getNombre(),precioTotal);
 
           comprador.get().getCarritosDeCompra().add(new CarritoDeCompra());
 
-          return new ResponseEntity<>("La compra fue realizada con éxito", HttpStatus.CREATED);
+
+          return new ResponseEntity<>(new RespuestaDTO(new Mensaje("Compra realizada con éxito"),factura), HttpStatus.CREATED);
 
         }
         return new ResponseEntity<>("EL VENDEDOR NO ACEPTA EL METODO DE PAGO", HttpStatus.BAD_REQUEST);
 
       }
 
-      return new ResponseEntity<>("El método de pago no existe", HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>("EL MÉTODO DE PAGO NO EXISTE", HttpStatus.NOT_FOUND);
 
     }
 
-    return new ResponseEntity<>("El comprador no existe", HttpStatus.NOT_FOUND);
+    return new ResponseEntity<>("EL COMPRADOR INGRESADO NO EXISTE", HttpStatus.NOT_FOUND);
 
   }
 

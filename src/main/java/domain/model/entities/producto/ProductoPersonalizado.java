@@ -16,18 +16,19 @@ import java.util.List;
 @Setter @Getter
 public class ProductoPersonalizado extends Persistente {
 
+  private Boolean estaPublicado;
+
   //@NotNull
   @ManyToOne
   private ProductoBase productoBase;
 
- @OneToMany(cascade = CascadeType.PERSIST)
- @JoinColumn(name = "Producto_Personalizado_id", referencedColumnName = "id")
+  @OneToMany(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "Producto_Personalizado_id", referencedColumnName = "id")
   private List<Personalizacion> personalizaciones;
 
- //TODO quizas ya no hace falta que tenga un vendedor
- @ManyToOne
- @JoinColumn(name = "vendedor_id")
- private Vendedor vendedor;
+  @ManyToOne
+  @JoinColumn(name = "vendedor_id")
+  private Vendedor vendedor;
 
   public ProductoPersonalizado() {
     this.personalizaciones = new ArrayList<>();
@@ -37,6 +38,7 @@ public class ProductoPersonalizado extends Persistente {
     this.productoBase = productoBase;
     this.vendedor = vendedor;
     this.personalizaciones = personalizaciones;
+    this.estaPublicado = false;
   }
 
   public Double calcularPrecioFinal(){

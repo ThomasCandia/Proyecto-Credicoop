@@ -1,5 +1,6 @@
 package domain.model.entities.comprador;
 
+import domain.DTOs.FacturaDTO;
 import domain.model.entities.Persistente;
 import domain.model.entities.vendedor.MetodoDePago;
 import domain.model.entities.vendedor.Vendedor;
@@ -10,6 +11,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.nio.MappedByteBuffer;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +20,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Compras")
-@Getter @Setter
+@Getter@Setter
 public class Compra extends Persistente {
 
   @ManyToOne
@@ -35,6 +38,7 @@ public class Compra extends Persistente {
 
   @ManyToOne
   private Vendedor vendedor;
+
 
   public Compra() {
     this.registroEstadosCompra = new ArrayList<>();
@@ -58,5 +62,5 @@ public class Compra extends Persistente {
   }
 
   //TODO hacer la factura acá
-  //public getFactura();
+
 }

@@ -27,15 +27,19 @@ public class CarritoDeCompra extends Persistente {
 
   public void agregarProducto(Item item) throws Exception {
 
-    //SI ESTA VACIO SE AGREGA EL ITEM SIN VERIFICAR EL VENDEDOR
-    if (itemsAComprar.isEmpty()) {
-      this.itemsAComprar.add(item);
-    }
-    // VALIDAMOS SI EL VENDEDOR DEL ITEM A AGREGAR ES EL MISMO DEL ULTIMO ITEM AGREGADO
-    else if( this.ultimoItem().getProductoPersonalizado().getVendedor().equals(item.getProductoPersonalizado().getVendedor()) ){
-      this.itemsAComprar.add(item);
-      //TODO heredar excepciones para que queden nombres lindos
-    } else throw new Exception("El item ingresado no es del mismo vendedor");
+    // VERIFICA QUE EL PRODUCTO ESTE PUBLICADO
+    if (item.getProductoPersonalizado().getEstaPublicado()) {
+
+      //SI ESTA VACIO SE AGREGA EL ITEM SIN VERIFICAR EL VENDEDOR
+      if (itemsAComprar.isEmpty()) {
+        this.itemsAComprar.add(item);
+      }
+      // VALIDAMOS SI EL VENDEDOR DEL ITEM A AGREGAR ES EL MISMO DEL ULTIMO ITEM AGREGADO
+      else if (this.ultimoItem().getProductoPersonalizado().getVendedor().equals(item.getProductoPersonalizado().getVendedor())) {
+        this.itemsAComprar.add(item);
+        //TODO heredar excepciones para que queden nombres lindos
+      } else throw new Exception("El item ingresado no es del mismo vendedor");
+    } else throw new Exception("El producto no está publicado!");
   }
 
 
@@ -62,10 +66,7 @@ public class CarritoDeCompra extends Persistente {
     }
       return this.itemsAComprar.get(itemsAComprar.size()-1);
 
-
-
   }
-
   public Vendedor vendedorElegido() throws Exception {
     return this.ultimoItem().getProductoPersonalizado().getVendedor();
   }

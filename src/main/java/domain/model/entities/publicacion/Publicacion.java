@@ -28,7 +28,7 @@ public class Publicacion extends Persistente {
     this.registrosEstados = new ArrayList<>();
   }
 
-  public Publicacion(String nombre,ProductoPersonalizado productoPublicado) {
+  public Publicacion(String nombre, ProductoPersonalizado productoPublicado) {
     this.nombre = nombre;
     this.productoPublicado = productoPublicado;
     this.registrosEstados = new ArrayList<>();
@@ -43,7 +43,5 @@ public class Publicacion extends Persistente {
   public void agregarRegistro(RegistroEstadoPublicacion registroEstadoPublicacion){
     this.registrosEstados.add(registroEstadoPublicacion);
   }
-
-
 
 }

@@ -30,7 +30,7 @@ public class Comprador extends Persistente {
 
   public Comprador(String nombre)
   {
-    this.nombre =nombre;
+    this.nombre = nombre;
     this.carritosDeCompra = new ArrayList<>();
     this.carritosDeCompra.add(new CarritoDeCompra());
   }

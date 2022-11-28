@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -16,10 +17,7 @@ import java.time.LocalTime;
 public class RegistroEstadoPublicacion extends Persistente {
 
   @Column(name = "fecha")
-  private  LocalDate fechaPublicacion;
-
-  @Column(name = "hora")
-  private  LocalTime horaPublicacion;
+  private LocalDateTime fechaHoraPublicacion;
 
   @Enumerated(EnumType.STRING)
   private EstadoPublicacion estadoPublicacion;
@@ -31,9 +29,8 @@ public class RegistroEstadoPublicacion extends Persistente {
 
   public RegistroEstadoPublicacion() {}
 
-  public RegistroEstadoPublicacion(LocalDate fechaPublicacion, LocalTime horaPublicacion, EstadoPublicacion estadoPublicacion, Publicacion publicacion) {
-    this.fechaPublicacion = fechaPublicacion;
-    this.horaPublicacion = horaPublicacion;
+  public RegistroEstadoPublicacion(LocalDateTime fechaHoraPublicacion, EstadoPublicacion estadoPublicacion, Publicacion publicacion) {
+    this.fechaHoraPublicacion = fechaHoraPublicacion;
     this.estadoPublicacion = estadoPublicacion;
     this.publicacion = publicacion;
   }

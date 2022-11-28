@@ -21,4 +21,8 @@ public class Tienda extends Persistente {
     this.publicaciones = new ArrayList<>();
   }
 
+  public void agregarPublicacion(Publicacion publicacion){
+    this.publicaciones.add(publicacion);
+  }
+
 }
