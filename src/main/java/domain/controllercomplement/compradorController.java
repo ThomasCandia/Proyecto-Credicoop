@@ -104,12 +104,11 @@ public class compradorController {
         //VALIDO SI EL VENDEDOR ACEPTA EL METODO DE PAGO SELECCIONADO
         if(vendedorElegido.getMetodosDePagos().contains(metodoDePagoElegido.get())) {
 
-          LocalDate fechaDeHoy = LocalDate.now();
-          LocalTime horaDeHoy = LocalTime.now();
+          LocalDateTime fechaDeHoy = LocalDateTime.now();
 
           Compra nuevaCompra = new Compra(metodoDePagoElegido.get(),comprador.get().getCarritoActual(),comprador.get(),vendedorElegido);
 
-          nuevaCompra.getRegistroEstadosCompra().add(new RegistroEstadoCompra(fechaDeHoy,horaDeHoy,EstadoCompra.PENDIENTE,nuevaCompra));
+          nuevaCompra.getRegistroEstadosCompra().add(new RegistroEstadoCompra(fechaDeHoy, PENDIENTE,nuevaCompra));
 
           repoCompra.save(nuevaCompra); //TODO ver si le asigna el id al registro
 
